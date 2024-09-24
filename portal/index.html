@@ -84,31 +84,45 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <img src="images/logo1.jpg" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px" />
-            <a class="navbar-brand" href="#">NEWTECH</a>
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img class="logo" src="logo.jpg" alt="logo" style="width: 50px; height: 50px; margin-right: 10px;">
+            </a>
+            <a class="navbar-brand" href="#">TRENDING NOW</a>
             <div class="collapse navbar-collapse">
                 <form class="d-flex" role="search" onsubmit="searchNews(event)">
-                    <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <input
+                        id="search-input"
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                    />
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <button class="btn btn-success ms-2" onclick="login()">Login</button>
-                <button class="btn btn-success ms-2" onclick="signUp()">Sign Up</button>
+                
             </div>
             <div class="social-icons d-flex">
-                <a href="#" target="_blank" class="btn"><i class="fab fa-twitter"></i> Twitter</a>
-                <a href="#" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="#" target="_blank" class="btn"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                <a href="#" target="_blank" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://x.com/VelammalEnggC?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" class="btn">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.youtube.com/watch?v=w6Nu5ieVzS8" target="_blank" class="btn">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/satishchennai/?originalSubdomain=in" target="_blank" class="btn">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/vec_chennai/" target="_blank" class="btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
             </div>
         </div>
     </nav>
-
-    <!-- Ad Banner Below Navbar -->
+    
     <div class="container my-4">
         <div class="ad-banner">
             <p>Advertisement</p>
-            <!-- Replace with actual ad code -->
+           
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
         </div>
 
@@ -139,10 +153,10 @@
                     </div>
                 </div>
 
-                <!-- Ad Banner in Sidebar -->
+                
                 <div class="ad-banner">
                     <p>Advertisement</p>
-                    <!-- Replace with actual ad code -->
+                    
                     <img src="https://via.placeholder.com/300x250?text=Ad+Banner" alt="Ad Banner">
                 </div>
             </div>
@@ -166,10 +180,10 @@
                     </div>
                 </div>
 
-                <!-- Ad Banner Between Sections -->
+               
                 <div class="ad-banner">
                     <p>Advertisement</p>
-                    <!-- Replace with actual ad code -->
+                    
                     <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
                 </div>
 
@@ -183,11 +197,10 @@
         </div>
     </div>
 
-    <!-- Ad Banner Above Footer -->
+    
     <div class="container my-4">
         <div class="ad-banner">
             <p>Advertisement</p>
-            <!-- Replace with actual ad code -->
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
         </div>
     </div>
@@ -379,7 +392,7 @@
                 .catch((error) => console.error("Error translating breaking news:", error));
         }
 
-        // Initial data fetch
+        
         fetchNews(currentPage);
         fetchRealTimeStockData();
         fetchWeatherData();

@@ -7,8 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        :root {
+            --primary-color: #748726; /* Teal */
+            --secondary-color: #000000; /* Black */
+            --light-color: #f8f9fa; /* Light background */
+            --dark-color: #343a40; /* Dark background */
+            --hover-color: #005f5f; /* Darker teal for hover */
+        }
+        body
+        {
+           
+            background-color: #c8cb9f;
+        }
         .navbar {
-            background-color: #343a40;
+            background-color: var(--dark-color);
             padding: 20px 0;
         }
         .navbar-brand {
@@ -20,23 +32,23 @@
         }
         .social-icons .btn {
             color: white;
-            background-color: #007bff;
+            background-color: var(--primary-color);
             margin-left: 10px;
             transition: background-color 0.3s;
         }
         .social-icons .btn:hover {
-            background-color: #0056b3;
+            background-color: var(--hover-color);
         }
         .category-box {
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: var(--light-color);
+            color: var(--dark-color);
             padding: 15px;
             border-radius: 5px;
             margin-bottom: 20px;
         }
         .category-button {
-            background-color: #007bff;
-            color: white;
+            background-color: var(--primary-color);
+            color: rgb(255, 255, 255);
             border: none;
             padding: 10px;
             margin: 5px 0;
@@ -44,16 +56,16 @@
             transition: background-color 0.3s;
         }
         .category-button:hover {
-            background-color: #0056b3;
+            background-color: var(--hover-color);
         }
         footer {
             padding: 1rem;
-            background-color: #343a40;
+            background-color: var(--dark-color);
             color: white;
             text-align: center;
         }
         .ad-banner {
-            background-color: #f8f9fa;
+            background-color: var(--light-color);
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -67,23 +79,48 @@
         }
         section {
             flex: 1;
-            background-color: white;
+            background-color: rgb(223, 212, 212);
             padding: 1em;
             margin: 0.5em;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .breaking-news {
-            background-color: #dc3545;
+            background-color: #af7c1d;
             color: white;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 20px;
         }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+        }
+        .btn-outline-success {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-outline-success:hover {
+            color: white;
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-success {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-success:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg"></nav>
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img class="logo" src="logo.jpg" alt="logo" style="width: 50px; height: 50px; margin-right: 10px;">
@@ -122,7 +159,7 @@
     <div class="container my-4">
         <div class="ad-banner">
             <p>Advertisement</p>
-           
+            <!-- Replace with actual ad code -->
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
         </div>
 
@@ -153,13 +190,14 @@
                     </div>
                 </div>
 
-                
+              
                 <div class="ad-banner">
                     <p>Advertisement</p>
                     
                     <img src="https://via.placeholder.com/300x250?text=Ad+Banner" alt="Ad Banner">
                 </div>
             </div>
+            
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-6">
@@ -180,10 +218,10 @@
                     </div>
                 </div>
 
-               
+                
                 <div class="ad-banner">
                     <p>Advertisement</p>
-                    
+                   
                     <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
                 </div>
 
@@ -201,6 +239,7 @@
     <div class="container my-4">
         <div class="ad-banner">
             <p>Advertisement</p>
+            
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
         </div>
     </div>
@@ -392,7 +431,7 @@
                 .catch((error) => console.error("Error translating breaking news:", error));
         }
 
-        
+       
         fetchNews(currentPage);
         fetchRealTimeStockData();
         fetchWeatherData();

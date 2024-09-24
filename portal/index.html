@@ -257,7 +257,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const newsApiKey = "1fba19c671f3453a8dbda5f94bc95b5a"; 
+        const newsApiKey = "44b56fd1a58247c087ca3d8e7f1282e3"; 
         const alphavantageapi = "Z0DMKDG4JWSZXLX"; 
         const weatherApiKey = "0d959e216301422586f35721242409"; 
         let currentPage = 1;
@@ -380,6 +380,7 @@
                 stockInfo.innerHTML += `<p>Error fetching data.</p>`;
             }
         }
+
 
         function fetchWeatherData() {
             const url = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=New York`;

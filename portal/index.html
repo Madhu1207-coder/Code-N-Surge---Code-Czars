@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Fetcher</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMZcZ78yFj5eVhT5W5o6Xz4H5BfD0e6Z3H+f6" crossorigin="anonymous">
+    <style>
+        .navbar {
+            background-color: black;
+            padding: 20px 0;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: rgb(245, 95, 95) !important;
+        }
+        .social-icons {
+            margin-left: auto;
+        }
+        .social-icons .btn {
+            color: white;
+            background-color: rgb(245, 95, 95);
+            margin-left: 10px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .social-icons .btn:hover {
+            background-color: #e9ab1c;
+        }
+        .category-box {
+            background-color: #1612f0;
+            color: rgb(246, 16, 123);
+            padding: 15px;
+            width: 350px;
+            border-radius: 5px;
+            margin-bottom: -100px;
+            height: 1000px;
+            margin-left: -70px;
+        }
+        .category-button {
+            background-color: rgb(207, 36, 36);
+            color: rgb(13, 11, 11);
+            border: solid;
+            padding: 50px 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .category-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        footer {
+            padding: 1rem;
+            background-color: black;
+            color: white;
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+        .footer-links {
+            margin-top: 20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .ad-banner {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        main {
+            display: flex;
+            flex: 1;
+            padding: 1em;
+        }
+
+        section {
+            flex: 1;
+            background-color: white;
+            padding: 1em;
+            margin: 0.5em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #stock-market {
+            background-color: #f9f9f9;
+        }
+        #weather{
+            background-color: #f9f9f9;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="images/logo1.jpg" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+            <a class="navbar-brand" href="#">NEWTECH</a>
+            <div class="collapse navbar-collapse">
+                <form class="d-flex" role="search" onsubmit="searchNews(event)">
+                    <input
+                        id="search-input"
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                    />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <button class="btn btn-success ms-2" onclick="login()">Login</button>
+                <button class="btn btn-success ms-2" onclick="signUp()">Sign Up</button>
+            </div>
+            <div class="social-icons d-flex">
+                <a href="https://x.com/VelammalEnggC?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" class="btn">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.youtube.com/watch?v=w6Nu5ieVzS8" target="_blank" class="btn">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="https://www.linkedin.com/in/satishchennai/?originalSubdomain=in" target="_blank" class="btn">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/vec_chennai/" target="_blank" class="btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="category-box">
+                    <h4 class="text-center">Categories</h4>
+                    <div class="d-flex flex-column">
+                        <button class="category-button" onclick="fetchCategory('sports')">Sports</button>
+                        <button class="category-button" onclick="fetchCategory('entertainment')">Entertainment</button>
+                        <button class="category-button" onclick="fetchCategory('business')">Business</button>
+                        <button class="category-button" onclick="fetchCategory('health')">Health</button>
+                        <button class="category-button" onclick="fetchCategory('science')">Science</button>
+                        <button class="category-button" onclick="fetchCategory('technology')">Technology</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6 order-md-1">
+                        <section id="stock-market">
+                            <h2>Stock Market</h2>
+                            <div id="stock-info">
+                                <p>Loading stock market data...</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-md-6 order-md-2">
+                        <section id="weather">
+                            <h2>Current Weather</h2>
+                            <div id="weather-info">
+                                <p>Loading weather data...</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <h1 class="text-center">Top News Headlines</h1>
+                <div id="news-container" class="row g-4">
+                    <!-- Dynamic content will be injected here -->
+                </div>
+
+                <div class="d-flex justify-content-around my-4">
+                    <button id="prev-page" class="btn btn-primary">Previous page</button>
+                    <button id="next-page" class="btn btn-primary">Next page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright © 2023 News Fetcher</p>
+        <div class="footer-links">
+            <a href="#" class="text-white">Privacy Policy</a> |
+            <a href="#" class="text-white">Contact Us</a> |
+            <a href="#" class="text-white">Follow Us</a>
+        </div>
+        <div>
+            <p>Email: info@newsfetcher.com | Phone: (123) 456-7890</p>
+            <p>Location: 123 News St, New York, NY 10001</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="mb-3">
+                            <label for="login-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="login-username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signUpModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signUpForm" onsubmit="handleSignUp(event)">
+                        <div class="mb-3">
+                            <label for="signup-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="signup-username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="signup-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signup-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-1MCgGqM0u4FpbmjgHRlKxLqqdf91fDEnDAZhuQO6W9KWoR+NdywY/n4m54p2Z7wD" crossorigin="anonymous"></script>
+    <script>
+        const newsApiKey = "1fba19c671f3453a8dbda5f94bc95b5a"; // Replace with your actual News API key
+        const stockApiKey = "izyEGzJcQnmdMWK3FVU7z2G1rgdgyd9j"; // Replace with your actual Stock Market API key
+        const weatherApiKey = "0d959e216301422586f35721242409"; // Replace with your actual Weather API key
+        let currentPage = 1;
+    
+        function fetchNews(page = 1) {
+            const url = `https://newsapi.org/v2/top-headlines?country=us&pageSize=6&page=${page}&apiKey=${newsApiKey}`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    renderNews(data.articles);
+                })
+                .catch((error) => console.error("Error fetching the news:", error));
+        }
+    
+        function fetchCategory(category) {
+            const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=6&apiKey=${newsApiKey}`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    renderNews(data.articles);
+                })
+                .catch((error) => console.error("Error fetching category news:", error));
+        }
+    
+        function renderNews(articles) {
+            const newsContainer = document.getElementById("news-container");
+            newsContainer.innerHTML = "";
+    
+            articles.forEach(article => {
+                const publishedDate = new Date(article.publishedAt).toLocaleString();
+                const author = article.author ? article.author : 'Unknown';
+                const publisher = article.source.name ? article.source.name : 'Unknown';
+    
+                const newsCard = `
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="card my-4">
+                            <img src="${article.urlToImage ? article.urlToImage : 'https://via.placeholder.com/300x200?text=No+Image'}" class="card-img-top" alt="News Image">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${article.title}</h5>
+                                <p class="text-muted">By ${author} | ${publisher} | ${publishedDate}</p>
+                                <p class="card-text flex-grow-1">${article.description || 'No description available'}</p>
+                                <a href="${article.url}" target="_blank" class="btn btn-primary mt-auto">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                newsContainer.innerHTML += newsCard;
+            });
+        }
+    
+        document.getElementById("prev-page").addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchNews(currentPage);
+            }
+        });
+    
+        document.getElementById("next-page").addEventListener("click", () => {
+            currentPage++;
+            fetchNews(currentPage);
+        });
+    
+        function searchNews(event) {
+            event.preventDefault();
+            const query = document.getElementById("search-input").value;
+            if (query) {
+                const url = `https://newsapi.org/v2/everything?q=${query}&pageSize=6&apiKey=${newsApiKey}`;
+                fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        renderNews(data.articles);
+                    })
+                    .catch((error) => console.error("Error fetching search results:", error));
+            } else {
+                alert("Please enter a search term.");
+            }
+        }
+    
+        function login() {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        }
+    
+        function signUp() {
+            const signUpModal = new bootstrap.Modal(document.getElementById('signUpModal'));
+            signUpModal.show();
+        }
+    
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+    
+            // Replace with actual login logic
+            alert(`Logged in with Username: ${username}`);
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            loginModal.hide();
+        }
+    
+        function handleSignUp(event) {
+            event.preventDefault();
+            const username = document.getElementById("signup-username").value;
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+    
+            // Replace with actual sign-up logic
+            alert(`Signed up with Username: ${username}`);
+            const signUpModal = bootstrap.Modal.getInstance(document.getElementById('signUpModal'));
+            signUpModal.hide();
+        }
+    
+        function fetchStockMarketData() {
+            const url = `https://api.polygon.io/v1/marketstatus/today?apiKey=${stockApiKey}`; // Replace with actual stock market API URL
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    renderStockMarketData(data);
+                })
+                .catch((error) => console.error("Error fetching stock market data:", error));
+        }
+    
+        function renderStockMarketData(data) {
+            const stockInfo = document.getElementById("stock-info");
+            stockInfo.innerHTML = `
+                <p>Stock Market Data:</p>
+                <p>Market Status: ${data.marketStatus}</p>
+            `;
+        }
+    
+        function fetchWeatherData() {
+            const url = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=New York`; // Replace with actual weather API URL
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    renderWeatherData(data);
+                })
+                .catch((error) => console.error("Error fetching weather data:", error));
+        }
+    
+        function renderWeatherData(data) {
+            const weatherInfo = document.getElementById("weather-info");
+            weatherInfo.innerHTML = `
+                <p>Current Weather in ${data.location.name}:</p>
+                <p>Temperature: ${data.current.temp_c}°C</p>
+                <p>Condition: ${data.current.condition.text}</p>
+                <p>Humidity: ${data.current.humidity}%</p>
+            `;
+        }
+    
+        // Initial data fetch
+        fetchNews(currentPage);
+        fetchStockMarketData();
+        fetchWeatherData();
+    </script>
+    
+</body>
+</html>

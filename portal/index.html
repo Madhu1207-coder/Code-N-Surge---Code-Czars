@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News Fetcher</title>
+    <title>News </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         :root {
-            --primary-color: #748726; /* Teal */
-            --secondary-color: #000000; /* Black */
-            --light-color: #f8f9fa; /* Light background */
-            --dark-color: #343a40; /* Dark background */
-            --hover-color: #005f5f; /* Darker teal for hover */
+            --primary-color: #748726; 
+            --secondary-color: #000000; 
+            --light-color: #f8f9fa; 
+            --dark-color: #343a40;
+            --hover-color: #005f5f; 
         }
         body
         {
@@ -120,12 +120,12 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg"></nav>
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img class="logo" src="logo.jpg" alt="logo" style="width: 50px; height: 50px; margin-right: 10px;">
             </a>
-            <a class="navbar-brand" href="#">TRENDING NOW</a>
+            <a class="navbar-brand" href="#">DAILY FED</a>
             <div class="collapse navbar-collapse">
                 <form class="d-flex" role="search" onsubmit="searchNews(event)">
                     <input
@@ -159,7 +159,7 @@
     <div class="container my-4">
         <div class="ad-banner">
             <p>Advertisement</p>
-            <!-- Replace with actual ad code -->
+           
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
         </div>
 
@@ -190,14 +190,13 @@
                     </div>
                 </div>
 
-              
+                
                 <div class="ad-banner">
                     <p>Advertisement</p>
                     
                     <img src="https://via.placeholder.com/300x250?text=Ad+Banner" alt="Ad Banner">
                 </div>
             </div>
-            
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-6">
@@ -218,10 +217,10 @@
                     </div>
                 </div>
 
-                
+               
                 <div class="ad-banner">
                     <p>Advertisement</p>
-                   
+                    
                     <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
                 </div>
 
@@ -239,7 +238,6 @@
     <div class="container my-4">
         <div class="ad-banner">
             <p>Advertisement</p>
-            
             <img src="https://via.placeholder.com/728x90?text=Ad+Banner" alt="Ad Banner">
         </div>
     </div>
@@ -431,7 +429,7 @@
                 .catch((error) => console.error("Error translating breaking news:", error));
         }
 
-       
+        
         fetchNews(currentPage);
         fetchRealTimeStockData();
         fetchWeatherData();

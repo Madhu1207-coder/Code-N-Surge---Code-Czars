@@ -1,0 +1,92 @@
+.navbar {
+    background-color: rgb(13, 13, 13);
+    padding: 20px 0;
+}
+.navbar-brand {
+    font-size: 1.8rem;
+    color: rgb(245, 95, 95) !important;
+}
+.social-icons {
+    margin-left: auto;
+}
+.social-icons .btn {
+    color: white;
+    background-color: rgb(245, 95, 95);
+    margin-left: 10px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+.social-icons .btn:hover {
+    background-color: #e9ab1c;
+}
+.category-box {
+    background-color: #1612f0;
+    color: rgb(246, 16, 123);
+    padding: 15px;
+    width: 350px;
+    border-radius: 5px;
+    margin-bottom: -100px;
+    height: 1000px;
+    margin-left: -70px;
+}
+.category-button {
+    background-color: rgb(207, 36, 36);
+    color: rgb(13, 11, 11);
+    border: solid;
+    padding: 50px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.category-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+footer {
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+.footer-links {
+    margin-top: 20px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.ad-banner {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+main {
+    display: flex;
+    flex: 1;
+    padding: 1em;
+}
+
+section {
+    flex: 1;
+    background-color: white;
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#stock-market {
+    background-color: #f9f9f9;
+}
+#weather{
+    background-color: #f9f9f9;
+}
